@@ -23,7 +23,7 @@
 ### Links
 
 - Solution URL: [https://github.com/Taktoka/Todo-app.git](https://github.com/Taktoka/Todo-app.git)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://todo-app-murex-one.vercel.app/](https://todo-app-murex-one.vercel.app/)
 
 ## My process
 
