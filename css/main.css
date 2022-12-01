@@ -1,0 +1,392 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --bright-blue: hsl(220, 98%, 61%);
+  --very-dark-blue: hsl(235, 21%, 11%);
+  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --light-grayish-blue: hsl(234, 39%, 85%);
+  --hover: hsl(236, 33%, 92%);
+  --dark-grayish-blue: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --very--dark-grayish--blue: hsl(237, 14%, 26%);
+}
+ul {
+  list-style: none;
+}
+:focus {
+  outline: none;
+}
+::placeholder {
+  font-family: inherit;
+  color: var(--dark-grayish-blue);
+  font-size: 11px;
+}
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+main {
+  transition: 0.3s;
+  margin: 50px auto;
+  height: 100vh;
+  width: 900px;
+  background-color: var(--very-dark-blue);
+  position: relative;
+}
+main .dark-bg {
+  max-width: 100%;
+}
+main .light-bg,
+main .mobile-dark,
+main .mobile-light {
+  display: none;
+}
+
+.todo-app {
+  width: 340px;
+  position: absolute;
+  top: 11%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.todo-app header {
+  margin-bottom: 15px;
+}
+.todo-app header i img {
+  max-width: 65%;
+  cursor: pointer;
+}
+.todo-app header i.moon-icon {
+  display: none;
+}
+.todo-app header i.sun-icon {
+  display: block;
+}
+
+.todo-app header .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.todo-app header h1 {
+  color: white;
+  font-size: 24px;
+  letter-spacing: 10px;
+}
+.todo-app header .new-item {
+  background-color: var(--very-dark-desaturated-blue);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  box-shadow: 8px 15px 20px 0px hsl(235deg 21% 11% / 12%);
+}
+
+.todo-app .new-item input {
+  caret-color: var(--bright-blue);
+  display: block;
+  width: 90%;
+  padding: 9px 11px;
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+  color: var(--light-grayish-blue);
+  font-family: inherit;
+}
+.todo-app .new-item .check-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid hsl(233deg 14% 35% / 37%);
+  text-align: center;
+  transition: 0.3s;
+  position: relative;
+  cursor: pointer;
+}
+
+.todo-app .new-item .check-box:after {
+  display: none;
+  content: "";
+  position: absolute;
+  inset: -1px;
+  opacity: 0.7;
+  border-radius: 50px;
+  padding: 1px;
+  -webkit-mask-composite: xor;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+.todo-app .new-item .check-box:hover::after {
+  display: block;
+}
+.todo-app .new-item .check-box .check-icon {
+  position: absolute;
+  background-image: url(/images/icon-check.svg);
+  background-size: 7px 7px;
+  background-repeat: no-repeat;
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.todo-app .app-body {
+  box-shadow: 3px 20px 20px 0px hsl(235deg 21% 11% / 44%);
+  background-color: var(--very-dark-desaturated-blue);
+  padding: 1px;
+  border-radius: 5px;
+}
+.todo-app .app-body .new-item {
+  box-shadow: none;
+  padding: 12px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+}
+.todo-app .app-body .new-item .item {
+  color: var(--light-grayish-blue);
+  font-size: 15px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.todo-app .app-body .new-item .cross-box {
+  position: absolute;
+  background-image: url("/images/icon-cross.svg");
+  background-size: 10px 10px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  top: 50%;
+  right: 3%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  display: none;
+}
+.todo-app .app-body .new-item:hover .cross-box {
+  display: inline-block;
+}
+.todo-app .app-body .new-item.checked .check-box {
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+.todo-app .app-body .new-item.checked .check-box .check-icon {
+  display: block;
+}
+.todo-app .app-body .new-item.checked .item {
+  text-decoration: line-through;
+  color: var(--dark-grayish-blue);
+}
+
+.todo-app .app-body .new-item::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: hsl(236deg 12% 31% / 32%);
+  bottom: 0;
+  left: 0;
+}
+
+.todo-app .app-body .footer {
+  display: flex;
+  font-size: 10px;
+  text-align: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: var(--very-dark-desaturated-blue);
+  color: var(--dark-grayish-blue);
+}
+.todo-app .app-body .sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.todo-app .app-body .sort li.active {
+  color: var(--bright-blue);
+}
+
+.todo-app .app-body .footer .items-left,
+.todo-app .app-body .footer .sort li,
+.todo-app .app-body .footer .clear {
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.todo-app .app-body .footer .items-left:hover,
+.todo-app .app-body .footer .sort li:not(.active):hover,
+.todo-app .app-body .footer .clear:hover {
+  color: var(--light-grayish-blue);
+}
+main .drag-drop {
+  position: absolute;
+  bottom: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--dark-grayish-blue);
+}
+.d-none {
+  display: none;
+}
+.dragging {
+  opacity: 0.5;
+}
+/* light theme */
+main.light {
+  background-color: hsl(0, 0%, 98%);
+}
+main.light .light-bg {
+  display: block;
+  max-width: 100%;
+}
+main.light .dark-bg {
+  display: none;
+}
+main.light .drag-drop {
+  color: hsl(236, 9%, 61%);
+}
+main.light header .head i.sun-icon {
+  display: none;
+}
+main.light header .head i.moon-icon {
+  display: block;
+}
+main.light .app-body .new-item:after {
+  background-color: hsl(236, 33%, 92%);
+}
+main.light .new-item input {
+  color: hsl(235, 19%, 35%);
+}
+main.light .app-body {
+  background-color: hsl(0, 0%, 98%);
+}
+main.light .new-item {
+  background-color: hsl(0, 0%, 98%);
+}
+main.light .app-body {
+  box-shadow: 2px 15px 20px 0px hsl(235deg 21% 11% / 14%);
+}
+
+main.light .app-body .new-item .item {
+  color: hsl(235, 19%, 35%);
+}
+
+main.light .app-body .new-item.checked .item {
+  color: hsl(236, 33%, 92%);
+}
+main.light .todo-app .footer {
+  background-color: hsl(0, 0%, 98%);
+}
+main.light .app-body .footer .items-left,
+main.light .app-body .footer .sort li:not(.active),
+main.light .app-body .footer .clear {
+  color: hsl(236, 9%, 61%);
+}
+main.light .app-body .footer .items-left:hover,
+main.light .app-body .footer .sort li:not(.active):hover,
+main.light .app-body .footer .clear:hover {
+  color: hsl(235, 19%, 35%);
+  font-weight: bold;
+}
+main.light .completed {
+  text-decoration-line: line-through;
+  opacity: 0.4;
+}
+@media (max-width: 576px) {
+  main {
+    margin: auto;
+    width: 100%;
+  }
+  main.light .light-bg,
+  main .dark-bg {
+    display: none;
+  }
+  main .mobile-dark {
+    display: block;
+  }
+  main.light .mobile-light {
+    display: block;
+  }
+  main.light .mobile-dark {
+    display: none;
+  }
+
+  main .todo-app {
+    width: 340px;
+    transform: translateX(-50%);
+    top: 40px;
+  }
+  main .todo-app header h1 {
+    font-size: 30px;
+  }
+  main .todo-app header i img {
+    max-width: 80%;
+  }
+  .todo-app header .new-item {
+    padding: 3px 15px;
+  }
+  .todo-app .new-item input {
+    padding: 15px 10px;
+  }
+  ::placeholder {
+    font-size: 13px;
+  }
+  .todo-app .new-item .check-box {
+    width: 20px;
+    height: 20px;
+  }
+
+  .todo-app .app-body .new-item {
+    padding: 20px;
+  }
+  .todo-app .app-body .new-item .item {
+    font-size: 16px;
+  }
+  .todo-app .app-body .new-item .cross-box {
+    background-size: 13px 13px;
+    width: 13px;
+    height: 13px;
+  }
+  .todo-app .app-body .footer {
+    padding: 20px;
+    font-size: 13px;
+    position: relative;
+  }
+  .todo-app .app-body .footer .clear,
+  .todo-app .app-body .footer .items-left {
+    font-weight: normal;
+  }
+  .todo-app .app-body .sort {
+    position: absolute;
+    bottom: -73px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--very-dark-desaturated-blue);
+    padding: 20px 77px;
+    font-size: 15px;
+    gap: 20px;
+    box-shadow: 8px 15px 20px 0px hsl(235deg 21% 11% / 5%);
+    border-radius: 5px;
+  }
+  main.light .todo-app .app-body .sort {
+    background-color: hsl(0, 0%, 98%);
+  }
+  .todo-app .drag-drop {
+    bottom: -218%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    width: 100%;
+  }
+}

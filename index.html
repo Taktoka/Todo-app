@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cairo:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,700&family=Gulzar&family=Inter:wght@400;700;800&family=Josefin+Sans:wght@400;700&family=League+Spartan:wght@700&family=Montserrat:wght@500;700&family=Open+Sans:wght@300;400;500;600;700&family=Outfit:wght@100;300;500&family=Plus+Jakarta+Sans:wght@300;500;800&family=Raleway:wght@100;300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>ToDo App</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/sortable.js"></script>
+  </head>
+  <body>
+    <main class="light">
+      <img src="/images/bg-desktop-dark.jpg" alt="" class="dark-bg" />
+      <img src="/images/bg-desktop-light.jpg" alt="" class="light-bg" />
+      <img src="/images/bg-mobile-dark.jpg" alt="" class="mobile-dark" />
+      <img src="/images/bg-mobile-light.jpg" alt="" class="mobile-light" />
+      <div class="todo-app">
+        <header>
+          <div class="head">
+            <h1>TODO</h1>
+            <i class="sun-icon"><img src="/images/icon-sun.svg" alt="" /></i>
+            <i class="moon-icon"><img src="/images/icon-moon.svg" alt="" /></i>
+          </div>
+          <div class="new-item">
+            <div class="check-box"></div>
+            <input
+              type="text"
+              id="main-input"
+              placeholder="Create a new todo..."
+            />
+          </div>
+        </header>
+        <div class="app-body">
+          <ul class="tasks">
+            .
+            <li class="new-item"></li>
+          </ul>
+          <div class="footer">
+            <div class="items-left"><span class="count"></span> items left</div>
+            <ul class="sort">
+              <li class="active all">All</li>
+              <li class="active-items">Active</li>
+              <li class="completed-items">Completed</li>
+            </ul>
+            <div class="clear">Clear Completed</div>
+            <div class="drag-drop">Drag and drop to reorder list</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="js/script.js"></script>
+  </body>
+</html>
